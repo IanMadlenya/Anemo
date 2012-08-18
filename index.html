@@ -16,7 +16,7 @@
     <div class="wrapper">
       <header>
         <h1>Anemo</h1>
-        <p>AAAAAAAAAAAAAAAAnemoi - Digital Image Processing Software for Segmentation of Climatological Graphic Records</p>
+        <p>Anemoi - Digital Image Processing Software for Segmentation of Climatological Graphic Records</p>
 
         <p class="view"><a href="https://github.com/matheussantana/Anemo">View the Project on GitHub <small>matheussantana/Anemo</small></a></p>
 
@@ -28,32 +28,106 @@
         </ul>
       </header>
       <section>
-        <h3>Welcome to GitHub Pages.</h3>
+        <h1>asiduhfauisdhfuiashdfuiahisdufhasd</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>Tap into <a href="http://the.echonest.com/">The Echo Nest's</a> Musical Brain for the best music search, information, recommendations and remix tools on the web.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<p>Pyechonest is an open source Python library for the Echo Nest API.  With Pyechonest you have Python access to the entire set of API methods including:</p>
+
+<ul>
+<li>
+<strong>artist</strong> - search for artists by name, description, or attribute, and get back detailed information about any artist including audio, similar artists, blogs, familiarity, hotttnesss, news, reviews, urls and video.</li>
+<li>
+<strong>song</strong> - search songs by artist, title, description, or attribute (tempo, duration, etc) and get detailed information back about each song, such as hotttnesss, audio_summary, or tracks.</li>
+<li>
+<strong>track</strong> - upload a track to the Echo Nest and receive summary information about the track including key, duration, mode, tempo, time signature along with detailed track info including timbre, pitch, rhythm and loudness information.</li>
+</ul><h2>Install</h2>
+
+<p>There are a few different ways you can install pyechonest:</p>
+
+<ul>
+<li>Use setuptools: "easy_install -U pyechonest"</li>
+<li>Download the zipfile from the <a href="https://github.com/echonest/pyechonest/archives/master">downloads</a> page and install it. </li>
+<li>Checkout the source: "git clone git://github.com/echonest/pyechonest.git" and install it yourself.</li>
+</ul><h2>Getting Started</h2>
+
+<ul>
+<li>Install Pyechonest</li>
+<li>
+<strong>Get an API key</strong> - to use the Echo Nest API you need an Echo Nest API key.  You can get one for free at <a href="http://developer.echonest.com">developer.echonest.com</a>.</li>
+<li>
+<strong>Set the API</strong> key - you can do this one of two ways:
+
+<ul>
+<li>set an environment variable named ECHO_NEST_API_KEY to your API key</li>
+<li>Include this snippet of code at the beginning of your python scripts:
+from pyechonest import config
+config.ECHO_NEST_API_KEY="YOUR API KEY"</li>
+</ul>
+</li>
+<li>Check out the <a href="http://echonest.github.com/pyechonest/">docs</a> and examples below.</li>
+</ul><h2>Examples</h2>
+
+<p><em>All examples assume you have already setup your api key!</em></p>
+
+<p>Find artists that are similar to 'Bikini Kill':</p>
+
+<pre><code>from pyechonest import artist
+bk = artist.Artist('bikini kill')
+print "Artists similar to: %s:" % (bk.name,)
+for similar_artist in bk.similar:
+    print "\t%s" % (similar_artist.name,)
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>Search for artist:</p>
 
-<h3>Designer Templates</h3>
+<pre><code>from pyechonest import artist
+weezer_results = artist.search(name='weezer')
+weezer = weezer_results[0]
+weezer_blogs = weezer.blogs
+print 'Blogs about weezer:', [blog.get('url') for blog in weezer_blogs]
+</code></pre>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>Get an artist by name:</p>
 
-<h3>Rather Drive Stick?</h3>
+<pre><code>from pyechonest import artist
+a = artist.Artist('lady gaga')
+print a.id
+</code></pre>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>Get an artist by Musicbrainz ID:</p>
 
-<h3>Authors and Contributors</h3>
+<pre><code>from pyechonest import artist
+a = artist.Artist('musicbrainz:artist:a74b1b7f-71a5-4011-9441-d0b5e4122711')
+print a.name
+</code></pre>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>Get the top hottt artists:</p>
 
-<h3>Support or Contact</h3>
+<pre><code>from pyechonest import artist
+for hottt_artist in artist.top_hottt():
+    print hottt_artist.name, hottt_artist.hotttnesss
+</code></pre>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>Search for songs:</p>
+
+<pre><code>from pyechonest import song
+rkp_results = song.search(artist='radiohead', title='karma police')
+karma_police = rkp_results[0]
+print karma_police.artist_location
+print 'tempo:',karma_police.audio_summary['tempo'],'duration:',karma_police.audio_summary['duration']
+</code></pre>
+
+<p>Get a song's audio_url and analysis_url:</p>
+
+<pre><code>from pyechonest import song
+ss_results = song.search(artist='the national', title='slow show', buckets=['id:7digital', 'tracks'], limit=True)
+slow_show = ss_results[0]
+ss_tracks = slow_show.get_tracks('7digital')
+print ss_tracks[0].get('preview_url')
+</code></pre>
+
+<p><img src="http://i.imgur.com/WWLYo.gif" alt="alt text" title="Frustrated cat can't believe this is the 12th time he's clicked on an auto-linked README.md URL"></p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/matheussantana">matheussantana</a></p>
