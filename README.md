@@ -83,7 +83,7 @@ For futher information see:
     
     ./anemo \<image input\> \<image output - optional\>
 
-Sample images inside the inputs/ directory.
+Sample input images inside the inputs/ directory.
 
 # To do list
 
