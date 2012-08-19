@@ -1,0 +1,11 @@
+Anemo:
+----------------
+
+Installation
+------------
+1) Download and unzip the .zip file or navigate to your git clone
+2) Go to directory bin/
+3) Open a terminal and run:
+	./anemo <image input> <image output - optional>
+
+

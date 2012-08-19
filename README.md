@@ -1,81 +1,81 @@
-# asiduhfauisdhfuiashdfuiahisdufhasd
+# Anemo
 
-Tap into [The Echo Nest's](http://the.echonest.com/) Musical Brain for the best music search, information, recommendations and remix tools on the web.
+## About
 
-Pyechonest is an open source Python library for the Echo Nest API.  With Pyechonest you have Python access to the entire set of API methods including:
+Anemo - Digital Image Processing Software for Segmentation of Climatological Graphic Records 
 
-  * **artist** - search for artists by name, description, or attribute, and get back detailed information about any artist including audio, similar artists, blogs, familiarity, hotttnesss, news, reviews, urls and video.
-  * **song** - search songs by artist, title, description, or attribute (tempo, duration, etc) and get detailed information back about each song, such as hotttnesss, audio_summary, or tracks.
-  * **track** - upload a track to the Echo Nest and receive summary information about the track including key, duration, mode, tempo, time signature along with detailed track info including timbre, pitch, rhythm and loudness information.
+Anemo is a open source software for digital image processing of climatological records registred by mechanical meteorological instruments(like anemometers and barometer).
+Curently it's just a prototype that realize the segmentation of anemograms(wind speed only).
 
-## Install
-There are a few different ways you can install pyechonest:
+**Input:** Wind speed graphic record(PNG/JPEG/TIFF file).
 
-* Use setuptools: "easy_install -U pyechonest"
-* Download the zipfile from the [downloads](https://github.com/echonest/pyechonest/archives/master) page and install it. 
-* Checkout the source: "git clone git://github.com/echonest/pyechonest.git" and install it yourself.
-   
-## Getting Started
- * Install Pyechonest
- * **Get an API key** - to use the Echo Nest API you need an Echo Nest API key.  You can get one for free at [developer.echonest.com](http://developer.echonest.com).
- * **Set the API** key - you can do this one of two ways:
-  * set an environment variable named ECHO_NEST_API_KEY to your API key
-  * Include this snippet of code at the beginning of your python scripts:
-    from pyechonest import config
-    config.ECHO_NEST_API_KEY="YOUR API KEY"
- * Check out the [docs](http://echonest.github.com/pyechonest/) and examples below.
+**Output:** Segmented graphic with the inflection points detected(PNG/JPEG/TIFF file).
 
-## Examples
-*All examples assume you have already setup your api key!*
+The set of techiques used are Cluster Analysis by K-Means algorithm, Smoothing Algorithm, 
+Freeman Encoding(Chain code), Chain Code Smoothing, Chain Code Profile Analysis and Concavity Analysis.
 
-Find artists that are similar to 'Bikini Kill':
+    Copyright (C) 2012 Matheus Santana
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
 
-    from pyechonest import artist
-    bk = artist.Artist('bikini kill')
-    print "Artists similar to: %s:" % (bk.name,)
-    for similar_artist in bk.similar:
-        print "\t%s" % (similar_artist.name,)
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
 
-Search for artist:
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-    from pyechonest import artist
-    weezer_results = artist.search(name='weezer')
-    weezer = weezer_results[0]
-    weezer_blogs = weezer.blogs
-    print 'Blogs about weezer:', [blog.get('url') for blog in weezer_blogs]
+Created by: Matheus Santana (matheusslima <at> yahoo <dot> com <dot> br)
 
-Get an artist by name:
+Date: 17/08/2012
 
-    from pyechonest import artist
-    a = artist.Artist('lady gaga')
-    print a.id
+For futher information see:
 
-Get an artist by Musicbrainz ID:
+[Project website] (http://matheussantana.github.com/Anemo/)
 
-    from pyechonest import artist
-    a = artist.Artist('musicbrainz:artist:a74b1b7f-71a5-4011-9441-d0b5e4122711')
-    print a.name
+[Code repository] (https://github.com/matheussantana/Anemo)
 
-Get the top hottt artists:
+[More info] (http://www2.comp.ufscar.br/~matheus_santana/index.php)
 
-    from pyechonest import artist
-    for hottt_artist in artist.top_hottt():
-        print hottt_artist.name, hottt_artist.hotttnesss
+##Requirements
 
-Search for songs:
+* OpenCV X or greater.
 
-    from pyechonest import song
-    rkp_results = song.search(artist='radiohead', title='karma police')
-    karma_police = rkp_results[0]
-    print karma_police.artist_location
-    print 'tempo:',karma_police.audio_summary['tempo'],'duration:',karma_police.audio_summary['duration']
+##Installation
 
-Get a song's audio_url and analysis_url:
+  * 1) Download and unzip the .zip file or navigate to your git cloned directory
+  * 2) Go to directory bin/
+  * 3) Open a terminal and run:
+    chmod +x anemo
+    ./anemo <image input> <image output - optional>
 
-    from pyechonest import song
-    ss_results = song.search(artist='the national', title='slow show', buckets=['id:7digital', 'tracks'], limit=True)
-    slow_show = ss_results[0]
-    ss_tracks = slow_show.get_tracks('7digital')
-    print ss_tracks[0].get('preview_url')
+You can use for test the input the images inside the inputs/ directory
 
-![alt text](http://i.imgur.com/WWLYo.gif "Frustrated cat can't believe this is the 12th time he's clicked on an auto-linked README.md URL")
+
+# To do list
+
+BUGS
+
+
+Improvements
+
+
+New config settings:
+
+
+##Version History
+
+    First Release:
+    0.1 - 04/09/2004
+    Release the code on GitHub under the GNU Public License
+
+
+##License
+
+The Anemo is released under the GNU Public License 3.
+
+You are free to use and modify the Anemo. All changes 
+must be uploaded to Git Hub under Anemo.

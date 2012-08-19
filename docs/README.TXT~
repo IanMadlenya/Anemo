@@ -1,0 +1,2 @@
+    chmod +x anemo
+    ./anemo <image input> <image output - optional>
