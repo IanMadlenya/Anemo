@@ -73,7 +73,7 @@ For futher information see:
 
 ##Requirements
 
-* OpenCV X or greater.
+* OpenCV
 
 ##Installation
 
