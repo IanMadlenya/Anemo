@@ -63,6 +63,12 @@ For futher information see:
 
 [More info] (http://www2.comp.ufscar.br/~matheus_santana/static.php?page=static120818-035738)
 
+##Paper
+
+[Segmentation of Climatological Graphic Records] (http://www2.comp.ufscar.br/~matheus_santana/paper/Anemo_en.pdf)
+
+[Segmentação de imagens de gráficos climatológicos] (http://www2.comp.ufscar.br/~matheus_santana/paper/Anemo_pt.pdf)
+
 ##Requirements
 
 * OpenCV
@@ -72,8 +78,10 @@ For futher information see:
   1. Download and unzip the .zip file or navigate to your git cloned directory
   2. Go to directory bin/
   3. Open a terminal and run:
+
     chmod +x anemo
-    ./anemo <image input> <image output - optional>
+    
+    ./anemo \<image input\> \<image output - optional\>
 
 You can use for test the input the images inside the inputs/ directory
 
